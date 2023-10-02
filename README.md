@@ -1,5 +1,7 @@
 #Patrones de Diseño
+
 Para nuestro proyecto se pidieron usar 3 patrones de diseño:
+
 * Adapter
 * Abstract Factory
 * State
