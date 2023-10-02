@@ -385,16 +385,17 @@ pedido_cena.crear_pedido
 ```
 ## Salida del Proyecto:
 
-<div style="background-color: black; color: white; padding: 10px;"><span style="color: red;">Ejemplo de Adapter:</span>
+```
+Ejemplo de Adapter:
 Ha pagado en efectivo la cantidad de $100
 Ha pagado de manera online la cantidad de $200
 
-<span style="color: red;">Ejemplo de State:</span>
+Ejemplo de State:
 Pedido confirmado.
 Pedido en preparación.
 Pedido listo para servir.
 
-<span style="color: red;">Ejemplo de Abstract Factory:</span>
+Ejemplo de Abstract Factory:
 Pedido: Menú de Desayuno, Plato Principal: Tostadas con huevos, Bebida: Café
 Pedido: Menú de Cena, Plato Principal: Filete de res a la parrilla, Bebida: Vino tinto
-</div>
+```
