@@ -219,5 +219,187 @@ class Pedido
   end
 end
 ```
+#Proyecto Completo
+```ruby
+# Patrón Adapter
+class SistemaVenta
+  def procesoPago
+  end
+end
 
+class PagoEfectivo < SistemaVenta
+  def procesoPago(cantidadPagar)
+    puts "Ha pagado en efectivo la cantidad de $#{cantidadPagar}"
+  end
+end
+
+class PagoOnlineAdapter < SistemaVenta
+  def initialize(pagoOnline)
+    @pagoOnline = pagoOnline
+  end
+
+  def procesoPago(cantidadPagar)
+    @pagoOnline.hacerPago(cantidadPagar)
+  end
+end
+
+class PagoOnline
+  def hacerPago(cantidadPagar)
+    puts "Ha pagado de manera online la cantidad de $#{cantidadPagar}"
+  end
+end
+
+# Patrón State
+class EstadoPedido
+  def confirmar(pedido)
+  end
+
+  def preparar(pedido)
+  end
+
+  def servir(pedido)
+  end
+end
+
+class EstadoConfirmado < EstadoPedido
+  def confirmar(pedido)
+    puts "Pedido confirmado."
+  end
+end
+
+class EstadoEnPreparacion < EstadoPedido
+  def preparar(pedido)
+    puts "Pedido en preparación."
+  end
+end
+
+class EstadoListo < EstadoPedido
+  def servir(pedido)
+    puts "Pedido listo para servir."
+  end
+end
+
+class EstadoEntregado < EstadoPedido
+  def servir(pedido)
+    puts "Pedido entregado."
+  end
+end
+
+class Pedido
+  attr_accessor :estado_pedido
+
+  def initialize
+    @estado_pedido = EstadoConfirmado.new
+  end
+
+  def confirmar
+    @estado_pedido.confirmar(self)
+  end
+
+  def preparar
+    @estado_pedido.preparar(self)
+  end
+
+  def servir
+    @estado_pedido.servir(self)
+  end
+end
+
+# Patrón Abstract Factory
+class MenuFactory
+  def crear_menu
+  end
+
+  def crear_plato_principal
+  end
+
+  def crear_bebida
+  end
+end
+
+class MenuDesayunoFactory < MenuFactory
+  def crear_menu
+    return "Menú de Desayuno"
+  end
+
+  def crear_plato_principal
+    return "Tostadas con huevos"
+  end
+
+  def crear_bebida
+    return "Café"
+  end
+end
+
+class MenuCenaFactory < MenuFactory
+  def crear_menu
+    return "Menú de Cena"
+  end
+
+  def crear_plato_principal
+    return "Filete de res a la parrilla"
+  end
+
+  def crear_bebida
+    return "Vino tinto"
+  end
+end
+
+class Pedido
+  attr_accessor :menu_factory
+
+  def initialize(menu_factory)
+    @menu_factory = menu_factory
+  end
+
+  def crear_pedido
+    menu = @menu_factory.crear_menu
+    plato_principal = @menu_factory.crear_plato_principal
+    bebida = @menu_factory.crear_bebida
+
+    puts "Pedido: #{menu}, Plato Principal: #{plato_principal}, Bebida: #{bebida}"
+  end
+end
+
+# Uso del patrón Adapter
+puts "Ejemplo de Adapter:"
+pago_efectivo = PagoEfectivo.new
+pago_efectivo.procesoPago(100)
+
+pago_online = PagoOnline.new
+adaptador_online = PagoOnlineAdapter.new(pago_online)
+adaptador_online.procesoPago(200)
+
+# Uso del patrón State
+puts "\nEjemplo de State:"
+pedido = Pedido.new
+pedido.confirmar
+pedido.preparar
+pedido.servir
+
+# Uso del patrón Abstract Factory
+puts "\nEjemplo de Abstract Factory:"
+menu_desayuno_factory = MenuDesayunoFactory.new
+pedido_desayuno = Pedido.new(menu_desayuno_factory)
+pedido_desayuno.crear_pedido
+
+menu_cena_factory = MenuCenaFactory.new
+pedido_cena = Pedido.new(menu_cena_factory)
+pedido_cena.crear_pedido
+```
+## Salida del Proyecto:
+
+<div style="background-color: black; color: white; padding: 10px;"><span style="color: red;">Ejemplo de Adapter:</span>
+Ha pagado en efectivo la cantidad de $100
+Ha pagado de manera online la cantidad de $200
+
+<span style="color: red;">Ejemplo de State:</span>
+Pedido confirmado.
+Pedido en preparación.
+Pedido listo para servir.
+
+<span style="color: red;">Ejemplo de Abstract Factory:</span>
+Pedido: Menú de Desayuno, Plato Principal: Tostadas con huevos, Bebida: Café
+Pedido: Menú de Cena, Plato Principal: Filete de res a la parrilla, Bebida: Vino tinto
+</div>
 
