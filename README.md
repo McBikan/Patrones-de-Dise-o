@@ -1,5 +1,4 @@
 #Patrones de Diseño
-
 Para nuestro proyecto se pidieron usar 3 patrones de diseño:
 * Adapter
 * Abstract Factory
@@ -8,12 +7,6 @@ Para nuestro proyecto se pidieron usar 3 patrones de diseño:
 ##Descripción del Proyecto
 Desarrollaremos un sistema de pedidos de restaurante que permita a los clientes realizar pedidos, a los chefs preparar los alimentos y a los camareros servir los platos. Este sistema deberá gestionar la comunicación entre los diferentes componentes y garantizar que los pedidos se procesen de manera eficiente.
  
- 
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
 
 ## Adapter
 El patrón Adapter se utiliza para hacer que una clase existente sea compatible con una interfaz diferente. Esto se logra mediante la creación de una clase intermedia, el "Adapter", que traduce las solicitudes de la nueva interfaz en llamadas a la clase existente.
@@ -403,4 +396,3 @@ Pedido listo para servir.
 Pedido: Menú de Desayuno, Plato Principal: Tostadas con huevos, Bebida: Café
 Pedido: Menú de Cena, Plato Principal: Filete de res a la parrilla, Bebida: Vino tinto
 </div>
-
