@@ -385,7 +385,7 @@ pedido_cena.crear_pedido
 ```
 ## Salida del Proyecto:
 
-```
+```ruby
 Ejemplo de Adapter:
 Ha pagado en efectivo la cantidad de $100
 Ha pagado de manera online la cantidad de $200
